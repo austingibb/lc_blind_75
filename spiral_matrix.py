@@ -58,8 +58,6 @@ class Solution:
         
         return result
 
-
-
     def spiralOrderOop(self, matrix: List[List[int]]) -> List[int]:
 
         if len(matrix) == 0 or len(matrix[0]) == 0:
