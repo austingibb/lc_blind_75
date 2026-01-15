@@ -8,6 +8,60 @@ class Vector:
 
 class Solution:
     def spiralOrder(self, matrix: List[List[int]]) -> List[int]:
+        return self.spiralOrderOop(matrix)
+
+    def spiralOrderOneFunction(self, matrix: List[List[int]]) -> List[int]:
+        if len(matrix) == 0 or len(matrix[0]) == 0:
+            return []
+        
+        rows, cols = len(matrix), len(matrix[0])
+
+        UP, RIGHT, DOWN, LEFT = 0, 1, 2, 3
+        up_bound = 0
+        down_bound = rows
+        left_bound = -1
+        right_bound = cols
+        direction = RIGHT
+
+        result = []
+
+        i, j = 0, 0
+        while len(result) < rows * cols:
+            if direction == RIGHT:
+                while j < right_bound:
+                    result.append(matrix[i][j])
+                    j += 1
+                i, j = i + 1, j - 1
+                right_bound -= 1
+                direction = DOWN
+            elif direction == LEFT:
+                while j > left_bound:
+                    result.append(matrix[i][j])
+                    j -= 1
+                i, j = i - 1, j + 1
+                left_bound += 1
+                direction = UP
+            elif direction == DOWN:
+                while i < down_bound:
+                    result.append(matrix[i][j])
+                    i += 1
+                i, j = i - 1, j - 1
+                down_bound -= 1
+                direction = LEFT
+            elif direction == UP:
+                while i > up_bound:
+                    result.append(matrix[i][j])
+                    i -= 1
+                i, j = i + 1, j + 1
+                up_bound += 1
+                direction = RIGHT
+        
+        return result
+
+
+
+    def spiralOrderOop(self, matrix: List[List[int]]) -> List[int]:
+
         if len(matrix) == 0 or len(matrix[0]) == 0:
             return []
 
