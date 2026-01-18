@@ -20,11 +20,9 @@ class Solution:
 
         candidate = candidates[index]
         # add one more of current candidate
-        current_sum += candidate
         combination.append(candidate)
-        self.recurse_candidate(index, candidates, current_sum, combination, target, result)
-        del combination[-1:]
-        current_sum -= candidate
+        self.recurse_candidate(index, candidates, current_sum + candidate, combination, target, result)
+        combination.pop()
         
             
 def main():
