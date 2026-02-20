@@ -19,9 +19,6 @@ class Solution(object):
         self.find_node_path(root, p, p_path)
         self.find_node_path(root, q, q_path)
 
-        # print("p_path", " -> ".join(map(lambda node: str(node.val), p_path)))
-        # print("q_path", " -> ".join(map(lambda node: str(node.val), q_path)))
-
         shortest_length = min(len(p_path), len(q_path))
         for i in range(0, shortest_length):
             if p_path[i] != q_path[i]:

@@ -12,4 +12,4 @@ class Solution:
     def missingNumberXor(self, nums: List[int]) -> int:
         numsXor = reduce(xor, nums)
         fullXor = reduce(xor, range(0, len(nums)+1))
-        return numsXor ^ fullXor 
+        return numsXor ^ fullX 
