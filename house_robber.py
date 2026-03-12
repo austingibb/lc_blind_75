@@ -4,6 +4,17 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
+        return self.rob_linear(nums)
+
+    def rob_linear(self, nums):
+        rob1, rob2 = 0, 0
+        for n in nums:
+            cur_rob = max(n + rob1, rob2)
+            rob1 = rob2
+            rob2 = cur_rob
+        return cur_rob
+
+    def rob_n_cache(self, nums):
         self.cache = {}
         return self.rob_recurse(0, nums)
 
@@ -18,4 +29,3 @@ class Solution(object):
 
         self.cache[i] = total
         return total
-        
